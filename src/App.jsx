@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer greeting="Bienvenid@ a la tienda online" />
+      <ItemListContainer greeting="Bienvenid@ a la tienda online Herboristeria Natural" />
     </>
   )
 }

@@ -1,5 +1,12 @@
 
 const ItemListContainer = ({greeting}) => {
+
+    const greetingStyles = {
+        color: 'black',
+        fontSize: '1.3rem',
+        fontWeight: 'lighter',
+    }
+
   return (
     <>
         <main>
@@ -8,7 +15,7 @@ const ItemListContainer = ({greeting}) => {
                     <div className="bienve">
                         <h1>HERBORISTERÍA NATURAL</h1>
                             <div className="usuario"> {/* llamada a usuario */}
-                            <p>{greeting} <span id="nombre-usuario"></span></p>
+                            <p style={greetingStyles}>{greeting} <span style={{fontStyle: 'italic', fontWeight: 'normal'}} id="nombre-usuario">Jesús Martín Blanco</span></p>
                         </div>
                         <span id="nombre-usuario" className="name"></span>
                     </div>
