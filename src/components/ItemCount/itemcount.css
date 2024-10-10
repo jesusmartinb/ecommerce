@@ -1,0 +1,27 @@
+.contador-con-boton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.botones-contador {
+    display: flex;
+    gap: 42px;
+    border: 2px solid rgb(168, 225, 199);
+    border-radius: 5px;
+}
+
+.botones-contador button {
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.boton-agregar-carrito button {
+    background-color: #fff;
+    border: 2px solid rgb(168, 225, 199);
+    border-radius: 5px;
+    cursor: pointer;
+}

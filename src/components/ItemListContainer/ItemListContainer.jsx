@@ -1,3 +1,5 @@
+import { useState } from "react"
+import ItemCount from "../ItemCount/ItemCount"
 
 const ItemListContainer = ({greeting}) => {
 
@@ -5,6 +7,23 @@ const ItemListContainer = ({greeting}) => {
         color: 'black',
         fontSize: '1.3rem',
         fontWeight: 'lighter',
+    }
+
+    const [contador, setContador] = useState(1)
+    const [stock, setStock] = useState(5)
+    const [initial, setInitial] = useState(1)
+
+    const onSubtract = () => {
+        if(contador > initial) {
+            setContador(contador - 1)
+        }
+    }
+
+    const onAdd = () => {
+        if(contador < stock) {
+            setContador(contador + 1)
+        }
+
     }
 
   return (
@@ -22,6 +41,7 @@ const ItemListContainer = ({greeting}) => {
                     <br />
                 </div>
             </div>
+            <ItemCount contador={contador} onAdd={onAdd} onSubtract={onSubtract} />
         </main>
     </>
   )
