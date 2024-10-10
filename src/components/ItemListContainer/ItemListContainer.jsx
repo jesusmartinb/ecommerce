@@ -1,5 +1,7 @@
-import { useState } from "react"
-import ItemCount from "../ItemCount/ItemCount"
+import { useEffect, useState } from "react"
+import { getProducts} from "../../data/data"
+import ItemList from "../ItemList/ItemList"
+
 
 const ItemListContainer = ({greeting}) => {
 
@@ -9,22 +11,18 @@ const ItemListContainer = ({greeting}) => {
         fontWeight: 'lighter',
     }
 
-    const [contador, setContador] = useState(1)
-    const [stock, setStock] = useState(5)
-    const [initial, setInitial] = useState(1)
+    const [products, setProducts] = useState([])
 
-    const onSubtract = () => {
-        if(contador > initial) {
-            setContador(contador - 1)
-        }
-    }
+    useEffect(() => {
 
-    const onAdd = () => {
-        if(contador < stock) {
-            setContador(contador + 1)
-        }
-
-    }
+        getProducts()
+            .then((data) => {
+                setProducts(data)
+            })
+            .catch((error) => {
+                console.log('Error: ', error)
+            })
+    }, [])
 
   return (
     <>
@@ -41,7 +39,10 @@ const ItemListContainer = ({greeting}) => {
                     <br />
                 </div>
             </div>
-            <ItemCount contador={contador} onAdd={onAdd} onSubtract={onSubtract} />
+            <div className="zona-productos my-4">
+                <h2 className="text-center my-5">Todos los productos</h2>
+                <ItemList products={products} />
+            </div>
         </main>
     </>
   )
