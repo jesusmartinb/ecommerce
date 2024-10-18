@@ -12,8 +12,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer greeting="Bienvenid@ a la tienda online Herboristeria Natural" />} />
-          <Route path="/category/:idCategory" element={<ItemListContainer />} />
+          <Route path="/category/:idCategory" element={<ItemListContainer greeting="Categorías" />} />
           <Route path="/item/:idProduct" element={<ItemDetailContainer />} />
+          <Route path="*" element={<h1 className="text-center">404 - Not Found</h1>} />
         </Routes>
       </BrowserRouter>
     </>
