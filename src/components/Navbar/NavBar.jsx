@@ -34,12 +34,12 @@ const NavBar = () => {
 									Catálogo de Productos
 								</a>
 								<ul className="dropdown-menu">
-									<li><Link className="dropdown-item" to="/category/General">General</Link></li>
-									<li><Link className="dropdown-item" to="/category/Sistema Digestivo">Sistema Digestivo</Link></li>
-									<li><Link className="dropdown-item" to="/category/Sistema Inmune">Sistema Inmune</Link></li>
-									<li><Link className="dropdown-item" to="/category/Sistema Nervioso">Sistema Nervioso</Link></li>
-									<li><Link className="dropdown-item" to="/category/Sistema Respiratorio">Sistema Respiratorio</Link></li>
-									<li><Link className="dropdown-item" to="/category/Sistema Óseo y Articular">Sistema Óseo y Articular</Link></li>
+									<li><Link className="dropdown-item" to="/category/general">General</Link></li>
+									<li><Link className="dropdown-item" to="/category/digestivo">Sistema Digestivo</Link></li>
+									<li><Link className="dropdown-item" to="/category/inmune">Sistema Inmune</Link></li>
+									<li><Link className="dropdown-item" to="/category/nervioso">Sistema Nervioso</Link></li>
+									<li><Link className="dropdown-item" to="/category/respiratorio">Sistema Respiratorio</Link></li>
+									<li><Link className="dropdown-item" to="/category/oseo">Sistema Óseo y Articular</Link></li>
 									<li><hr className="dropdown-divider" /></li>
 									<li><Link className="dropdown-item" to="/">Todos los Productos</Link></li>
 								</ul>

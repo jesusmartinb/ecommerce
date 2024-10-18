@@ -7,7 +7,7 @@ const products = [
         presentation: '400gr.',
         price: 10,
         image: '/img/hierbabuena.jpg',
-        category: 'Sistema Nervioso',
+        category: 'nervioso',
         stock: 7
     },
     {
@@ -18,7 +18,7 @@ const products = [
         presentation: '400gr.',
         price: 15,
         image: '/img/lavanda.jpg',
-        category: 'Sistema Nervioso',
+        category: 'nervioso',
         stock: 3
     },
     {
@@ -29,7 +29,7 @@ const products = [
         presentation: '300gr.',
         price: 20,
         image: '/img/manzanilla.png',
-        category: 'Sistema Digestivo',
+        category: 'digestivo',
         stock: 5
     },
     {
@@ -40,7 +40,7 @@ const products = [
         presentation: '300gr.',
         price: 35,
         image: '/img/tomillo.jpg',
-        category: 'Sistema Respiratorio',
+        category: 'respiratorio',
         stock: 10
     },
     {
@@ -51,18 +51,18 @@ const products = [
         presentation: '300gr.',
         price: 45,
         image: '/img/estragon.webp',
-        category: 'Sistema Digestivo',
+        category: 'digestivo',
         stock: 4
     },
     {
         id: '6',
         name: 'Albahaca',
-        description:'La albahaca es muy rica en calcio, básico para reforzar huesos y dientes, y potasio, que regula el contenido de agua de las células y su movimiento, además de moderar el sistema nervioso y muscular e intervenir en la construcción de proteínas.',
+        description:'La albahaca es muy rica en calcio, básico para reforzar huesos y dientes, y potasio, que regula el contenido de agua de las células y su movimiento, además de moderar el nervioso y muscular e intervenir en la construcción de proteínas.',
         brand: 'Artemis',
         presentation: '300gr.',
         price: 8,
         image: '/img/albahaca.jpg',
-        category: 'Sistema Óseo y Articular',
+        category: 'oseo',
         stock: 15
     },
     {
@@ -73,7 +73,7 @@ const products = [
         presentation: '300gr.',
         price: 60,
         image: '/img/curcuma.webp',
-        category: 'Sistema Óseo y Articular',
+        category: 'oseo',
         stock: 6
     },
     {
@@ -84,7 +84,7 @@ const products = [
         presentation: '300gr.',
         price: 17,
         image: '/img/jengibre.jpg',
-        category: 'General',
+        category: 'general',
         stock: 3
     },
     {
@@ -95,7 +95,7 @@ const products = [
         presentation: '300gr.',
         price: 32,
         image: '/img/oregano.jpg',
-        category: 'General',
+        category: 'general',
         stock: 9
     },
     {
@@ -106,7 +106,7 @@ const products = [
         presentation: '300gr.',
         price: 40,
         image: '/img/kukicha2.jpg',
-        category: 'Sistema Inmune',
+        category: 'inmune',
         stock: 12
     },
     {
@@ -117,7 +117,7 @@ const products = [
         presentation: '300gr.',
         price: 25,
         image: '/img/matcha.jpg',
-        category: 'Sistema Nervioso',
+        category: 'nervioso',
         stock: 14
     },
     {
@@ -128,7 +128,7 @@ const products = [
         presentation: '300gr.',
         price: 23,
         image: '/img/te_verde.webp',
-        category: 'Sistema Inmune',
+        category: 'inmune',
         stock: 5
     },
 ]

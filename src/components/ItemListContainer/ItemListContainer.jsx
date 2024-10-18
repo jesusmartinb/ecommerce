@@ -23,22 +23,22 @@ const ItemListContainer = ({greeting}) => {
                 if (idCategory) {
 
                     switch (idCategory) {
-                        case 'Sistema Nervioso':
+                        case 'nervioso':
                             setCategory('Sistema Nervioso')
                             break
-                        case 'Sistema Digestivo':
+                        case 'digestivo':
                             setCategory('Sistema Digestivo')
                             break
-                        case 'Sistema Respiratorio':
+                        case 'respiratorio':
                             setCategory('Sistema Respiratorio')
                             break
-                        case 'Sistema Óseo y Articular':
+                        case 'oseo':
                             setCategory('Sistema Óseo y Articular')
                             break
-                        case 'General':
+                        case 'general':
                             setCategory('General')
                             break
-                        case 'Sistema Inmune':
+                        case 'inmune':
                             setCategory('Sistema Inmune')
                             break
                         case '':
