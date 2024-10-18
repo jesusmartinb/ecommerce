@@ -53,6 +53,7 @@ const ItemListContainer = ({greeting}) => {
                     setProducts(filterProducts)
                     return
                 } else {
+                    setCategory('Todos los productos')
                     setProducts(data)
                 }
             })

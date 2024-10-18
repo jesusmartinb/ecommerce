@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ItemListContainer greeting="Bienvenid@ a la tienda online Herboristeria Natural" />} />
           <Route path="/category/:idCategory" element={<ItemListContainer />} />
-          <Route path="/detail/:idProduct" element={<ItemDetailContainer />} />
+          <Route path="/item/:idProduct" element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
     </>

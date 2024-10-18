@@ -33,7 +33,7 @@ const Item = ( { product } ) => {
                 <p className="marca">Marca: {brand}</p>
                 <p className="presenta">Presentación: {presentation}</p>
                 <p className="precio">Precio: {price}€</p>
-                <Link className="boton" to={`/detail/${id}`}>Ver detalle</Link>
+                <Link className="boton" to={`/item/${id}`}>Ver detalle</Link>
             </div>
             <div className="card-footer text-center">
                 <ItemCount stock={stock} contador={contador} onAdd={onAdd} onSubtract={onSubtract} />
