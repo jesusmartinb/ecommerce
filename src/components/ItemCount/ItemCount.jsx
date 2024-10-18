@@ -6,7 +6,7 @@ const ItemCount = ( { contador, onAdd, onSubtract } ) => {
     <div className="contador-con-boton">
         <div className="botones-contador">
             <button onClick={ onSubtract }>-</button>
-            { contador }
+            <span>{ contador }</span>
             <button onClick={ onAdd }>+</button>
         </div>
         <div className="boton-agregar-carrito">

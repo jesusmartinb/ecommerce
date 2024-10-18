@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getProducts} from "../../data/data"
 import ItemList from "../ItemList/ItemList"
+import { useParams } from 'react-router-dom'
 
 
 const ItemListContainer = ({greeting}) => {
@@ -12,17 +13,53 @@ const ItemListContainer = ({greeting}) => {
     }
 
     const [products, setProducts] = useState([])
+    const { idCategory } = useParams()
+    const [category, setCategory] = useState('Todos los productos')
 
     useEffect(() => {
 
         getProducts()
             .then((data) => {
-                setProducts(data)
+                if (idCategory) {
+
+                    switch (idCategory) {
+                        case 'Sistema Nervioso':
+                            setCategory('Sistema Nervioso')
+                            break
+                        case 'Sistema Digestivo':
+                            setCategory('Sistema Digestivo')
+                            break
+                        case 'Sistema Respiratorio':
+                            setCategory('Sistema Respiratorio')
+                            break
+                        case 'Sistema Óseo y Articular':
+                            setCategory('Sistema Óseo y Articular')
+                            break
+                        case 'General':
+                            setCategory('General')
+                            break
+                        case 'Sistema Inmune':
+                            setCategory('Sistema Inmune')
+                            break
+                        case '':
+                            setCategory('Todos los productos')
+                            break
+                        default:
+                            setCategory('Todos los productos')
+                            break
+                    }
+
+                    const filterProducts = data.filter((product) => product.category === idCategory)
+                    setProducts(filterProducts)
+                    return
+                } else {
+                    setProducts(data)
+                }
             })
             .catch((error) => {
                 console.log('Error: ', error)
             })
-    }, [])
+    }, [idCategory])
 
   return (
     <>
@@ -40,7 +77,7 @@ const ItemListContainer = ({greeting}) => {
                 </div>
             </div>
             <div className="zona-productos my-4">
-                <h2 className="text-center my-5">Todos los productos</h2>
+                <h2 className="text-center my-5">{category}</h2>
                 <ItemList products={products} />
             </div>
         </main>

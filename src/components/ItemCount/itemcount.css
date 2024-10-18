@@ -8,7 +8,7 @@
 
 .botones-contador {
     display: flex;
-    gap: 42px;
+    /* gap: 42px; */
     border: 2px solid rgb(168, 225, 199);
     border-radius: 5px;
 }
@@ -17,6 +17,11 @@
     border: none;
     background-color: #f1f1f1;
     cursor: pointer;
+}
+
+.botones-contador span {
+    background-color: #fff;
+    padding: 0 42px;
 }
 
 .boton-agregar-carrito button {

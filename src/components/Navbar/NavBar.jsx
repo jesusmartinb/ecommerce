@@ -1,6 +1,7 @@
 import '../../index.css'
 import Logo from '../../assets/img/logo_3.svg'
 import CartWidget from '../CartWidget/CartWidget'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
 
@@ -16,9 +17,9 @@ const NavBar = () => {
     <div className="container-fluid" style={gutterX}>
 			<nav className="navbar navbar-expand-lg" style={{backgroundColor: "#a8e1c7"}}>
 				<div className="container-fluid px-5">
-					<a className="navbar-brand">
+					<Link className="navbar-brand" to="/">
 						<img src={Logo} alt="Logo" width="60%" />
-					</a>
+					</Link>
 					
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
@@ -26,32 +27,25 @@ const NavBar = () => {
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav ms-auto my-2 my-lg-0" style={scrollHeight}>
 							<li className="nav-item">
-								<a className="nav-link" aria-current="page" href="index.html">Blog</a>
+								<Link className="nav-link" aria-current="page" to="/">Blog</Link>
 							</li>
 							<li className="nav-item dropdown">
 								<a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Catálogo de Productos
 								</a>
 								<ul className="dropdown-menu">
-									<li><a className="dropdown-item" href="#">General</a></li>
-									<li><a className="dropdown-item" href="#">Genérico</a></li>
-									<li><a className="dropdown-item" href="#">Nutricósmética</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Circulatorio</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Digestivo</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Hormonal</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Inmune</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Nervioso</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Renal</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Reproductor</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Respiratorio</a></li>
-									<li><a className="dropdown-item" href="#">Sistema Óseo y Articular</a></li>
-									<li><a className="dropdown-item" href="#">Vitaminas, Minerales y AminoÁcidos</a></li>
+									<li><Link className="dropdown-item" to="/category/General">General</Link></li>
+									<li><Link className="dropdown-item" to="/category/Sistema Digestivo">Sistema Digestivo</Link></li>
+									<li><Link className="dropdown-item" to="/category/Sistema Inmune">Sistema Inmune</Link></li>
+									<li><Link className="dropdown-item" to="/category/Sistema Nervioso">Sistema Nervioso</Link></li>
+									<li><Link className="dropdown-item" to="/category/Sistema Respiratorio">Sistema Respiratorio</Link></li>
+									<li><Link className="dropdown-item" to="/category/Sistema Óseo y Articular">Sistema Óseo y Articular</Link></li>
 									<li><hr className="dropdown-divider" /></li>
-									<li><a className="dropdown-item" href="#">Todos los Productos</a></li>
+									<li><Link className="dropdown-item" to="/">Todos los Productos</Link></li>
 								</ul>
 							</li>
 							<li className="nav-item" id="login-logout">
-								<a className="nav-link" aria-current="page" href="login.html">Login</a>
+								<a className="nav-link" aria-current="page" href="#">Login</a>
 							</li>
 							<CartWidget />
 						</ul>
