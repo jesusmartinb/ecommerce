@@ -1,5 +1,6 @@
 import ItemCount from '../ItemCount/ItemCount'
-import {useState} from 'react';
+import {useState, useContext} from 'react'
+import { CartContext } from '../../context/cartContext'
 import './itemDetail.css'
 
 const ItemDetail = ( { product } ) => {
@@ -17,6 +18,14 @@ const ItemDetail = ( { product } ) => {
         if(contador < product.stock) {
             setContador(contador + 1)
         }
+    }
+
+    const { addProductInCart } = useContext(CartContext)
+
+    const addProduct = (contador) => {
+        const productCart = { ...product, quantity: contador }
+
+        addProductInCart(productCart)
     }
 
     const [currentImage, setCurrentImage] = useState(product.image[0])
@@ -43,7 +52,7 @@ const ItemDetail = ( { product } ) => {
           <p>Presentación: {product.presentation}</p>
           <p>Precio: {product.price}€</p>
           <p>Existencias: {product.stock}</p>
-          <ItemCount stock={product.stock} contador={contador} onAdd={onAdd} onSubtract={onSubtract} />
+          <ItemCount stock={product.stock} contador={contador} onAdd={onAdd} onSubtract={onSubtract} addProduct={addProduct} />
       </div>
     </div>
   )

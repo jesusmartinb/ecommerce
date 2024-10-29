@@ -1,6 +1,6 @@
 import './itemcount.css'
 
-const ItemCount = ( { contador, onAdd, onSubtract } ) => {
+const ItemCount = ( { contador, onAdd, onSubtract, addProduct } ) => {
 
   return (
     <div className="contador-con-boton">
@@ -10,7 +10,7 @@ const ItemCount = ( { contador, onAdd, onSubtract } ) => {
             <button onClick={ onAdd }>+</button>
         </div>
         <div className="boton-agregar-carrito">
-            <button>Agregar al carrito</button>
+            <button onClick={ () => addProduct(contador) }>Agregar al carrito</button>
         </div>
     </div>
   )
