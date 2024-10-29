@@ -26,7 +26,7 @@ const Item = ( { product } ) => {
   return (
     <li className="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card-producto card">
-            <img src={image} alt={name} />
+            <img src={image[0]} alt={name} />
             <div className="card-body">
                 <h5 className="nombre card-title">{name}</h5>
                 <p className="card-text">{description}</p>

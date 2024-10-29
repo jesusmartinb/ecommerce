@@ -4,7 +4,7 @@ import './itemDetail.css'
 
 const ItemDetail = ( { product } ) => {
 
-      const [contador, setContador] = useState(1)
+    const [contador, setContador] = useState(1)
     const [initial, setInitial] = useState(1)
 
     const onSubtract = () => {
@@ -19,9 +19,22 @@ const ItemDetail = ( { product } ) => {
         }
     }
 
+    const [currentImage, setCurrentImage] = useState(product.image[0])
+
+    const images = product.image.filter((image) => image !== currentImage)
+
   return (
     <div className="item-detail container">
-      <img className="item-detail-img" src={product.image} alt={product.name} />
+      <div className="images-detail-container">
+        <div className="secondary-images">
+          {
+            images.map((image) => (
+              <img key={image} src={image} alt={product.name} onClick={() => setCurrentImage(image)} />
+            ))
+          }
+        </div>
+        <img className="item-detail-img main-image" src={currentImage} alt={product.name} />
+      </div>
       <div>
           <h2>{product.name}</h2>
           <p>{product.description}</p>
