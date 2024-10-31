@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { getProducts} from "../../data/data"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import db from '../../db/db.js'
 
 
 const ItemListContainer = ({greeting}) => {
@@ -16,50 +18,83 @@ const ItemListContainer = ({greeting}) => {
     const { idCategory } = useParams()
     const [category, setCategory] = useState('Todos los productos')
 
+    const getProducts = () => {
+        const productsRef = collection(db, 'products')
+
+        getDocs(productsRef)
+            .then((dataDb) => {
+                const productsDb = dataDb.docs.map((productDb) => {
+                    return { id: productDb.id, ...productDb.data() }
+                })
+                setProducts(productsDb)
+            })
+    }
+
+    const getProductsByCategory = () => {
+        const productsRef = collection(db, 'products')
+        const queryCategories = query(productsRef, where('category', '==', idCategory))
+
+        getDocs(queryCategories)
+            .then((dataDb) => {
+                const productsDb = dataDb.docs.map((productDb) => {
+                    return { id: productDb.id, ...productDb.data() }
+                })
+                setProducts(productsDb)
+            })
+    }
+
     useEffect(() => {
 
-        getProducts()
-            .then((data) => {
-                if (idCategory) {
-
-                    switch (idCategory) {
-                        case 'nervioso':
-                            setCategory('Sistema Nervioso')
-                            break
-                        case 'digestivo':
-                            setCategory('Sistema Digestivo')
-                            break
-                        case 'respiratorio':
-                            setCategory('Sistema Respiratorio')
-                            break
-                        case 'oseo':
-                            setCategory('Sistema Óseo y Articular')
-                            break
-                        case 'general':
-                            setCategory('General')
-                            break
-                        case 'inmune':
-                            setCategory('Sistema Inmune')
-                            break
-                        case '':
-                            setCategory('Todos los productos')
-                            break
-                        default:
-                            setCategory('Todos los productos')
-                            break
-                    }
-
-                    const filterProducts = data.filter((product) => product.category === idCategory)
-                    setProducts(filterProducts)
-                    return
-                } else {
+        
+        if (idCategory) {
+            
+            switch (idCategory) {
+                case 'nervioso':
+                    setCategory('Sistema Nervioso')
+                    break
+                case 'digestivo':
+                    setCategory('Sistema Digestivo')
+                    break
+                case 'respiratorio':
+                    setCategory('Sistema Respiratorio')
+                    break
+                case 'oseo':
+                    setCategory('Sistema Óseo y Articular')
+                    break
+                case 'general':
+                    setCategory('General')
+                    break
+                case 'inmune':
+                    setCategory('Sistema Inmune')
+                    break
+                case '':
                     setCategory('Todos los productos')
-                    setProducts(data)
-                }
-            })
-            .catch((error) => {
-                console.log('Error: ', error)
-            })
+                    break
+                default:
+                    setCategory('Todos los productos')
+                    break
+            }
+            getProductsByCategory()
+        } else {
+            getProducts()
+        }
+
+        // getProducts()
+        //     .then((data) => {
+        //         if (idCategory) {
+
+
+        //             const filterProducts = data.filter((product) => product.category === idCategory)
+        //             setProducts(filterProducts)
+        //             return
+        //         } else {
+        //             setCategory('Todos los productos')
+        //             setProducts(data)
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.log('Error: ', error)
+        //     })
     }, [idCategory])
 
   return (
