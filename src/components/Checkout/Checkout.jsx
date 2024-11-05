@@ -64,10 +64,10 @@ const Checkout = () => {
                     handleChangeInput={handleChangeInput} 
                     handleSubmit={handleSubmit} />
             ) : (
-                <div>
+                <div className="mb-3 mt-5" style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                     <h2>Su orden se subio correctamente!</h2>
                     <p>Por favor guarde su número de seguimiento: {idOrder}</p>
-                    <Link to="/">Volver al inicio</Link>
+                    <Link className="btn btn-info" to="/">Volver al inicio</Link>
                 </div>
             )
         }
