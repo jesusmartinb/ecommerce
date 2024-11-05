@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getProducts} from "../../data/data"
+// import { getProducts} from "../../data/data"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
@@ -77,24 +77,9 @@ const ItemListContainer = ({greeting}) => {
             getProductsByCategory()
         } else {
             getProducts()
+            setCategory('Todos los productos')
         }
 
-        // getProducts()
-        //     .then((data) => {
-        //         if (idCategory) {
-
-
-        //             const filterProducts = data.filter((product) => product.category === idCategory)
-        //             setProducts(filterProducts)
-        //             return
-        //         } else {
-        //             setCategory('Todos los productos')
-        //             setProducts(data)
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log('Error: ', error)
-        //     })
     }, [idCategory])
 
   return (
