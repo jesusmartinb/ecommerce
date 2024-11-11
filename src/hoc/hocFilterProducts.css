@@ -1,0 +1,31 @@
+.filter-products {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filter-products .filters {
+    width: 100%;
+    height: 100px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.filter-products .filters input {
+    width: 80%;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.select {
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color: #6c757d;
+}

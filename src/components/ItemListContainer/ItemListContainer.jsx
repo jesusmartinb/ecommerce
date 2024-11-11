@@ -4,11 +4,12 @@ import ItemList from "../ItemList/ItemList"
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import db from '../../db/db.js'
-import ItemDetail from '../ItemDetail/ItemDetail';
+// import ItemDetail from '../ItemDetail/ItemDetail';
 import Loading from '../Loading/Loading';
+import hocFilterProducts from "../../hoc/hocFilterProducts"
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({greeting, products, category, loading}) => {
 
     const greetingStyles = {
         color: 'black',
@@ -16,76 +17,76 @@ const ItemListContainer = ({greeting}) => {
         fontWeight: 'lighter',
     }
 
-    const [products, setProducts] = useState([])
-    const { idCategory } = useParams()
-    const [category, setCategory] = useState('Todos los productos')
-    const [loading, setLoading] = useState(true)
+    // const [products, setProducts] = useState([])
+    // const { idCategory } = useParams()
+    // const [category, setCategory] = useState('Todos los productos')
+    // const [loading, setLoading] = useState(true)
 
-    const getProducts = () => {
-        const productsRef = collection(db, 'products')
+    // const getProducts = () => {
+    //     const productsRef = collection(db, 'products')
 
-        getDocs(productsRef)
-            .then((dataDb) => {
-                const productsDb = dataDb.docs.map((productDb) => {
-                    return { id: productDb.id, ...productDb.data() }
-                })
-                setProducts(productsDb)
-            })
-    }
+    //     getDocs(productsRef)
+    //         .then((dataDb) => {
+    //             const productsDb = dataDb.docs.map((productDb) => {
+    //                 return { id: productDb.id, ...productDb.data() }
+    //             })
+    //             setProducts(productsDb)
+    //         })
+    // }
 
-    const getProductsByCategory = () => {
-        const productsRef = collection(db, 'products')
-        const queryCategories = query(productsRef, where('category', '==', idCategory))
+    // const getProductsByCategory = () => {
+    //     const productsRef = collection(db, 'products')
+    //     const queryCategories = query(productsRef, where('category', '==', idCategory))
 
-        getDocs(queryCategories)
-            .then((dataDb) => {
-                const productsDb = dataDb.docs.map((productDb) => {
-                    return { id: productDb.id, ...productDb.data() }
-                })
-                setProducts(productsDb)
-            })
-    }
+    //     getDocs(queryCategories)
+    //         .then((dataDb) => {
+    //             const productsDb = dataDb.docs.map((productDb) => {
+    //                 return { id: productDb.id, ...productDb.data() }
+    //             })
+    //             setProducts(productsDb)
+    //         })
+    // }
 
-    useEffect(() => {
-        setLoading(true)
+    // useEffect(() => {
+    //     setLoading(true)
         
-        if (idCategory) {
+    //     if (idCategory) {
             
-            switch (idCategory) {
-                case 'nervioso':
-                    setCategory('Sistema Nervioso')
-                    break
-                case 'digestivo':
-                    setCategory('Sistema Digestivo')
-                    break
-                case 'respiratorio':
-                    setCategory('Sistema Respiratorio')
-                    break
-                case 'oseo':
-                    setCategory('Sistema Óseo y Articular')
-                    break
-                case 'general':
-                    setCategory('General')
-                    break
-                case 'inmune':
-                    setCategory('Sistema Inmune')
-                    break
-                case '':
-                    setCategory('Todos los productos')
-                    break
-                default:
-                    setCategory('Todos los productos')
-                    break
-            }
-            getProductsByCategory()
-            setLoading(false)
-        } else {
-            getProducts()
-            setLoading(false)
-            setCategory('Todos los productos')
-        }
+    //         switch (idCategory) {
+    //             case 'nervioso':
+    //                 setCategory('Sistema Nervioso')
+    //                 break
+    //             case 'digestivo':
+    //                 setCategory('Sistema Digestivo')
+    //                 break
+    //             case 'respiratorio':
+    //                 setCategory('Sistema Respiratorio')
+    //                 break
+    //             case 'oseo':
+    //                 setCategory('Sistema Óseo y Articular')
+    //                 break
+    //             case 'general':
+    //                 setCategory('General')
+    //                 break
+    //             case 'inmune':
+    //                 setCategory('Sistema Inmune')
+    //                 break
+    //             case '':
+    //                 setCategory('Todos los productos')
+    //                 break
+    //             default:
+    //                 setCategory('Todos los productos')
+    //                 break
+    //         }
+    //         getProductsByCategory()
+    //         setLoading(false)
+    //     } else {
+    //         getProducts()
+    //         setLoading(false)
+    //         setCategory('Todos los productos')
+    //     }
 
-    }, [idCategory])
+    // }, [idCategory])
 
   return (
     <>
@@ -113,4 +114,6 @@ const ItemListContainer = ({greeting}) => {
   )
 }
 
-export default ItemListContainer
+const ItemListContainerWithHoc = hocFilterProducts(ItemListContainer)
+
+export default ItemListContainerWithHoc
