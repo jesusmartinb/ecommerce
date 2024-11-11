@@ -4,6 +4,8 @@ import ItemList from "../ItemList/ItemList"
 import { useParams } from 'react-router-dom'
 import { collection, getDocs, query, where } from 'firebase/firestore'
 import db from '../../db/db.js'
+import ItemDetail from '../ItemDetail/ItemDetail';
+import Loading from '../Loading/Loading';
 
 
 const ItemListContainer = ({greeting}) => {
@@ -17,6 +19,7 @@ const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
     const { idCategory } = useParams()
     const [category, setCategory] = useState('Todos los productos')
+    const [loading, setLoading] = useState(true)
 
     const getProducts = () => {
         const productsRef = collection(db, 'products')
@@ -44,7 +47,7 @@ const ItemListContainer = ({greeting}) => {
     }
 
     useEffect(() => {
-
+        setLoading(true)
         
         if (idCategory) {
             
@@ -75,8 +78,10 @@ const ItemListContainer = ({greeting}) => {
                     break
             }
             getProductsByCategory()
+            setLoading(false)
         } else {
             getProducts()
+            setLoading(false)
             setCategory('Todos los productos')
         }
 
@@ -99,7 +104,9 @@ const ItemListContainer = ({greeting}) => {
             </div>
             <div className="zona-productos my-4">
                 <h2 className="text-center my-5">{category}</h2>
-                <ItemList products={products} />
+                {
+                    loading ? (<Loading />) : <ItemList products={products} />
+                }
             </div>
         </main>
     </>

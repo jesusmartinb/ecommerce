@@ -7,6 +7,9 @@ import { CartProvider } from './context/cartContext'
 import Cart from './components/Cart/Cart'
 import Checkout from './components/Checkout/Checkout'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 function App() {
 
   return (
@@ -14,6 +17,7 @@ function App() {
       <BrowserRouter>
         <CartProvider>
           <NavBar />
+          <ToastContainer theme='dark' />
           <Routes>
             <Route path="/" element={<ItemListContainer greeting="Bienvenid@ a la tienda online Herboristeria Natural" />} />
             <Route path="/category/:idCategory" element={<ItemListContainer greeting="Categorías" />} />
