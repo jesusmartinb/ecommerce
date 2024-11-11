@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 import { toast } from 'react-toastify'
+import Swal from 'sweetalert2';
 
 //creamos un contexto llamado CartContext
 const CartContext = createContext()
@@ -44,14 +45,38 @@ const CartProvider = ({children}) => {
     }
 
     const deleteProductById = (idProduct) => {
-        const filterProducts = cart.filter((productCart) => productCart.id !== idProduct)
-        setCart(filterProducts)
-        toast.success('Producto eliminado del carrito')
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar producto'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                const filterProducts = cart.filter((productCart) => productCart.id !== idProduct)
+                setCart(filterProducts)
+                toast.success('Producto eliminado del carrito')
+            }
+          })
     }
 
     const deleteCart = () => {
-        setCart([])
-        toast.success('Carrito eliminado')
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar carrito'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                setCart([])
+                toast.success('Carrito eliminado')
+            }
+          })
     }
     
     return(
