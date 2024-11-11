@@ -19,8 +19,8 @@ function App() {
           <NavBar />
           <ToastContainer theme='dark' />
           <Routes>
-            <Route path="/" element={<ItemListContainerWithHoc greeting="Bienvenid@ a la tienda online Herboristeria Natural" />} />
-            <Route path="/category/:idCategory" element={<ItemListContainerWithHoc greeting="Categorías" />} />
+            <Route path="/" element={<ItemListContainerWithHoc />} />
+            <Route path="/category/:idCategory" element={<ItemListContainerWithHoc />} />
             <Route path="/item/:idProduct" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
