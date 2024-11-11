@@ -12,10 +12,13 @@ const Checkout = () => {
     const [formData, setFormData] = useState({
         fullname: '',
         phone: '',
-        email: ''
+        email: '',
+        confirmEmail: ''
     })
 
     const [idOrder, setIdOrder] = useState(null)
+
+    const checkOut = true;
 
     const { cart, totalPrice } = useContext(CartContext)
 
@@ -63,7 +66,7 @@ const Checkout = () => {
             setDoc(productRef, { ...dataProduct, stock: dataProduct.stock - quantity })
         })
 
-        deleteCart()
+        deleteCart(checkOut)
     }
 
 

@@ -62,21 +62,25 @@ const CartProvider = ({children}) => {
           })
     }
 
-    const deleteCart = () => {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar carrito'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                setCart([])
-                toast.success('Carrito eliminado')
-            }
-          })
+    const deleteCart = (checkout) => {
+        if(!checkout){
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar carrito'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setCart([])
+                    toast.success('Carrito eliminado')
+                }
+            })
+        } else {
+            setCart([])
+        }
     }
     
     return(

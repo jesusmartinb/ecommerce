@@ -6,6 +6,8 @@ const Cart = () => {
 
   const { cart, totalPrice, deleteProductById, deleteCart } = useContext(CartContext)
 
+  const checkOut = false
+
   return (
     <div>
       <h2 className="mb-5">Productos en el carrito</h2>
@@ -33,7 +35,7 @@ const Cart = () => {
 
       <p className="mt-1 p-2 text-end" style={{ marginRight: "150px" }}>Precio Total: {totalPrice()}</p>
       <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center"}}>
-        <button className="btn btn-danger" onClick={() => deleteCart()}>Vaciar carrito</button>
+        <button className="btn btn-danger" onClick={() => deleteCart(checkOut)}>Vaciar carrito</button>
       </div>
       <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center"}}>
       <Link className="btn btn-success" to="/Checkout">Terminar la Compra</Link>
