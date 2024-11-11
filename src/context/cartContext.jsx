@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { toast } from 'react-toastify'
 
 //creamos un contexto llamado CartContext
 const CartContext = createContext()
@@ -17,9 +18,11 @@ const CartProvider = ({children}) => {
             tempCart[findIndex].quantity += newProduct.quantity
 
             setCart(tempCart)
+            toast.success('Producto añadido de nuevo al carrito')
         } else {
             // agregar producto al carrito si no está
             setCart([...cart, newProduct])
+            toast.success('Producto añadido al carrito')
         }
     }
 
@@ -43,10 +46,12 @@ const CartProvider = ({children}) => {
     const deleteProductById = (idProduct) => {
         const filterProducts = cart.filter((productCart) => productCart.id !== idProduct)
         setCart(filterProducts)
+        toast.success('Producto eliminado del carrito')
     }
 
     const deleteCart = () => {
         setCart([])
+        toast.success('Carrito eliminado')
     }
     
     return(
