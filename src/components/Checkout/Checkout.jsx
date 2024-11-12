@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import FormCheckout from '../FormCheckout/FormCheckout'
 import { CartContext } from '../../context/cartContext'
 import { Timestamp, addDoc, collection, doc, setDoc } from 'firebase/firestore'
@@ -24,9 +24,33 @@ const Checkout = () => {
 
     const { deleteCart } = useContext(CartContext)
 
+    const [habilitado, setHabilitado] = useState(false)
+
     const handleChangeInput = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
+
     }
+
+    const validate = async () => {
+        setHabilitado(false)
+        if (formData.fullname !== '' && formData.phone !== '' && formData.email !== '' && formData.confirmEmail !== '' && formData.email === formData.confirmEmail) {
+            try {
+                const response = await validateForm(formData)
+                if (response.status === 'error') throw new Error(response.message)
+
+                setHabilitado(response.habilitado)
+                
+            } catch (error) {
+                toast.error(error.message)
+            }
+        }
+    }
+
+    useEffect(() => {
+
+        validate()
+        
+    }, [formData])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,16 +61,9 @@ const Checkout = () => {
             date: Timestamp.fromDate(new Date()),
             total: totalPrice()
         }
-
-        try {
-            const response = await validateForm(formData)
-            if (response.status === 'error') throw new Error(response.message)
             
-            toast.success('Subiendo orden...')
-            uploadOrder(order)
-        } catch (error) {
-            toast.error(error.message)
-        }
+        toast.success('Subiendo orden...')
+        uploadOrder(order)
 
     }
 
@@ -77,7 +94,8 @@ const Checkout = () => {
                 <FormCheckout 
                     formData={formData} 
                     handleChangeInput={handleChangeInput} 
-                    handleSubmit={handleSubmit} />
+                    handleSubmit={handleSubmit}
+                    habilitado={habilitado} />
             ) : (
                 <div className="mb-3 mt-5" style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                     <h2>Su orden se subio correctamente!</h2>

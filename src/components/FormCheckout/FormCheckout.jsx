@@ -1,5 +1,5 @@
 
-const FormCheckout = ({ formData, handleChangeInput, handleSubmit }) => {
+const FormCheckout = ({ formData, handleChangeInput, handleSubmit, habilitado }) => {
 
   return (
     <div className='container mt-5'>
@@ -21,7 +21,9 @@ const FormCheckout = ({ formData, handleChangeInput, handleSubmit }) => {
           <input className='form-control' type="email" name="confirmEmail" id="confirmEmail" value={formData.confirmEmail} onChange={handleChangeInput} />
         </div>
 
-        <button className='btn btn-success' type="submit">Enviar mi orden</button>
+        <div style={{ 'cursor': habilitado ? '' : 'not-allowed', 'width': '136px' }}>
+          <button className='btn btn-success' disabled={!habilitado} type="submit">Enviar mi orden</button>
+        </div>
       </form>
     </div>
   )

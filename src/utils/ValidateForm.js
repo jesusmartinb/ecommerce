@@ -10,9 +10,9 @@ let userSchema = object({
 const validateForm = async (formData) => {
     try {
         await userSchema.validate(formData)
-        return { status: 'success'}
+        return { status: 'success', habilitado: true}
     } catch (error) {
-        return { status: 'error', message: error.message }
+        return { status: 'error', message: error.message, habilitado: false }
     }
 }
 
