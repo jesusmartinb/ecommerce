@@ -34,11 +34,11 @@ const Cart = () => {
       }
 
       <p className="mt-1 p-2 text-end" style={{ marginRight: "150px" }}>Precio Total: ${totalPrice()}</p>
-      <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center"}}>
-        <button className="btn btn-danger" onClick={() => deleteCart(checkOut)}>Vaciar carrito</button>
+      <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center", cursor: (totalPrice()) > 0 ? '' : 'not-allowed', 'width': '164px', margin: '0 auto'}}>
+        <button className="btn btn-danger" style={{ pointerEvents: (totalPrice()) > 0 ? '' : 'none', 'width': '164px', margin: '0 auto' }} onClick={() => deleteCart(checkOut)}>Vaciar carrito</button>
       </div>
-      <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center"}}>
-      <Link className="btn btn-success" to="/Checkout">Terminar la Compra</Link>
+      <div className="mb-3 mt-5" style={{display: "flex", justifyContent: "center", cursor: (totalPrice()) > 0 ? '' : 'not-allowed' }}>
+      <Link className="btn btn-success" style={{ pointerEvents: (totalPrice()) > 0 ? '' : 'none', 'width': '164px', margin: '0 auto' }} to="/Checkout">Terminar la Compra</Link>
       </div>
     </div>
   )
