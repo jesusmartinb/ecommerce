@@ -26,10 +26,10 @@ Tienda online de plantas medicinales implementada con React y Firebase.
 
 ## Puesta en marcha de la aplicación
 
-1- Clonar la rama principal del proyecto (main)
-2- Instalar las dependencias con npm install
-3- Añadir los ficheros .env y .env.local con las variables de entorno
-4- Ejecutar el comando "npm run dev" desde una terminal en el directorio raiz del proyecto.
+1. Clonar la rama principal del proyecto (main)
+2. Instalar las dependencias con npm install
+3. Añadir los ficheros .env y .env.local con las variables de entorno
+4. Ejecutar el comando "npm run dev" desde una terminal en el directorio raiz del proyecto.
 
 ## El presente trabajo se encuenta en el repositorio:
 
