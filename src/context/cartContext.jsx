@@ -1,13 +1,15 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
 import Swal from 'sweetalert2';
 
 //creamos un contexto llamado CartContext
 const CartContext = createContext()
 
+const initialCart = JSON.parse(localStorage.getItem('cart')) || []
+
 const CartProvider = ({children}) => {
 
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(initialCart)
 
     const addProductInCart = (newProduct) => {
         const condicion = isProductInCart(newProduct.id)
@@ -82,6 +84,10 @@ const CartProvider = ({children}) => {
             setCart([])
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart])
     
     return(
         <CartContext.Provider value={ { cart, addProductInCart, totalQuantity, totalPrice, deleteProductById, deleteCart } }>
